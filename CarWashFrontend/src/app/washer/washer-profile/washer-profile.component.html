@@ -1,0 +1,24 @@
+<div class="p-8 max-w-xl mx-auto bg-white/10 backdrop-blur-md rounded-xl text-white shadow-lg">
+  <h2 class="text-3xl font-bold mb-6">👤 Washer Profile</h2>
+  <form (ngSubmit)="updateProfile()" class="space-y-4">
+    <div>
+      <label class="block text-sm">Username</label>
+      <input [(ngModel)]="washer.userName" name="userName" class="w-full p-2 rounded bg-gray-800 text-white" />
+    </div>
+    <div>
+      <label class="block text-sm">Email</label>
+      <input [(ngModel)]="washer.email" name="email" class="w-full p-2 rounded bg-gray-800 text-white" />
+    </div>
+    <div>
+      <label class="block text-sm">Phone Number</label>
+      <input [(ngModel)]="washer.phoneNumber" name="phoneNumber" class="w-full p-2 rounded bg-gray-800 text-white" />
+    </div>
+    <div class="flex items-center gap-4">
+      <label><input type="checkbox" [(ngModel)]="washer.isAvailable" name="isAvailable" /> Available</label>
+      <label><input type="checkbox" [(ngModel)]="washer.isActive" name="isActive" /> Active</label>
+    </div>
+    <button type="submit" class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded">
+      Update Profile
+    </button>
+  </form>
+</div>

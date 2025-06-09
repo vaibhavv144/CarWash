@@ -1,0 +1,25 @@
+<div class="container mx-auto mt-4 px-4">
+  <h3 class="mb-3 text-2xl font-semibold">All Customers</h3>
+  <div class="overflow-x-auto">
+    <table class="min-w-full border border-gray-300 divide-y divide-gray-300">
+      <thead class="bg-gray-800 text-white">
+        <tr>
+          <th class="px-4 py-2 text-left text-sm font-medium">User Name</th>
+          <th class="px-4 py-2 text-left text-sm font-medium">Email</th>
+          <th class="px-4 py-2 text-left text-sm font-medium">Active</th>
+        </tr>
+      </thead>
+      <tbody class="divide-y divide-gray-200 bg-white">
+        <tr *ngFor="let customer of customers">
+          <td class="px-4 py-2 text-sm">{{ customer.userName }}</td>
+          <td class="px-4 py-2 text-sm">{{ customer.email }}</td>
+          <td class="px-4 py-2 text-sm">
+            <span [ngClass]="customer.isActive ? 'text-green-600 font-semibold' : 'text-red-600 font-semibold'">
+              {{ customer.isActive ? 'Yes' : 'No' }}
+            </span>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

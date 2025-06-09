@@ -1,0 +1,25 @@
+<div class="ml-64 p-8 min-h-screen bg-gray-900 text-white">
+  <h2 class="text-3xl font-bold mb-6">📦 Available Orders</h2>
+
+  <!-- No orders -->
+  <div *ngIf="orders.length === 0" class="text-white/60 text-lg">
+    No available orders at the moment.
+  </div>
+
+  <!-- List of orders -->
+  <div *ngFor="let order of orders" class="bg-white/10 backdrop-blur-md rounded-xl p-6 mb-4 shadow border border-white/10">
+    <p><strong>Order #{{ order.id }}</strong></p>
+    <p>Customer: {{ order.customer }}</p>
+    <p>Car: {{ order.carModel }}</p>
+    <p>Service: {{ order.service }}</p>
+
+    <div class="mt-4 flex gap-3">
+      <button (click)="accept(order.id)" class="bg-green-600 hover:bg-green-700 px-4 py-2 rounded text-white">
+        ✅ Accept
+      </button>
+      <button (click)="reject(order.id)" class="bg-red-600 hover:bg-red-700 px-4 py-2 rounded text-white">
+        ❌ Reject
+      </button>
+    </div>
+  </div>
+</div>

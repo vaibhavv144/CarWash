@@ -1,0 +1,18 @@
+<div class="p-8 text-white">
+  <h2 class="text-3xl font-bold mb-6">🚗 Current Orders</h2>
+  <div *ngFor="let order of orders" class="bg-white/10 backdrop-blur-md rounded-xl p-6 mb-6 shadow">
+    <p><strong>Order #{{ order.id }}</strong></p>
+    <p>Status: {{ order.status }}</p>
+    <div class="mt-4 space-y-2">
+      <input placeholder="New Status"
+             [(ngModel)]="statusUpdate[order.id].status"
+             class="w-full p-2 rounded bg-gray-800 text-white" />
+      <input placeholder="Image URL (optional)"
+             [(ngModel)]="statusUpdate[order.id].imageUrl"
+             class="w-full p-2 rounded bg-gray-800 text-white" />
+      <button (click)="updateStatus(order.id)" class="bg-yellow-600 hover:bg-yellow-700 px-4 py-2 rounded text-white">
+        Update Status
+      </button>
+    </div>
+  </div>
+</div>

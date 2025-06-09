@@ -1,0 +1,38 @@
+<div class="flex h-screen bg-gray-900 text-white font-sans">
+  <!-- Sidebar -->
+  <aside class="w-64 p-4 bg-white/10 backdrop-blur-md fixed inset-y-0 left-0 shadow-lg border-r border-white/10">
+    <h2 class="text-xl font-bold mb-6 text-white/80">🧽 Washer Panel</h2>
+    <nav class="space-y-3">
+      <a routerLink="/washer/dashboard" class="block p-2 rounded hover:bg-white/10">📊 Dashboard</a>
+      <a routerLink="/washer/profile" class="block p-2 rounded hover:bg-white/10">👤 Profile</a>
+      <a routerLink="/washer/available-orders" class="block p-2 rounded hover:bg-white/10">📦 Available Orders</a>
+      <a routerLink="/washer/current-orders" class="block p-2 rounded hover:bg-white/10">🚗 Current Orders</a>
+      <button (click)="logout()" class="block w-full text-left p-2 rounded hover:bg-red-600 text-red-300">🚪 Logout</button>
+    </nav>
+  </aside>
+
+  <!-- Main -->
+  <main class="ml-64 p-6 overflow-y-auto w-full">
+    <h1 class="text-3xl font-bold mb-6">Welcome Washer 👋</h1>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      <!-- Profile Card Link -->
+      <a routerLink="/washer/profile" class="glass-card block p-4 rounded-xl bg-white/10 backdrop-blur-md shadow hover:bg-white/20 transition">
+        <h3 class="text-lg font-semibold">🧾 View Profile</h3>
+        <p class="text-sm text-white/70">See and update your profile</p>
+      </a>
+
+      <!-- Available Orders Card Link -->
+      <a routerLink="/washer/available-orders" class="glass-card block p-4 rounded-xl bg-white/10 backdrop-blur-md shadow hover:bg-white/20 transition">
+        <h3 class="text-lg font-semibold">📦 Available Orders</h3>
+        <p class="text-sm text-white/70">Accept or reject orders</p>
+      </a>
+
+      <!-- Current Orders Card Link -->
+      <a routerLink="/washer/current-orders" class="glass-card block p-4 rounded-xl bg-white/10 backdrop-blur-md shadow hover:bg-white/20 transition">
+        <h3 class="text-lg font-semibold">🚗 Current Orders</h3>
+        <p class="text-sm text-white/70">Track and update ongoing orders</p>
+      </a>
+    </div>
+  </main>
+</div>

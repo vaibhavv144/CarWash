@@ -1,0 +1,51 @@
+<div class="p-6">
+  <h2 class="text-2xl font-semibold mb-4">Manage Orders</h2>
+
+  <div *ngIf="orders.length > 0; else noOrders">
+    <div class="overflow-x-auto">
+      <table class="min-w-full border border-gray-300 divide-y divide-gray-200 shadow-sm rounded-lg">
+        <thead class="bg-gray-100 text-gray-700">
+          <tr>
+            <th class="px-4 py-2 text-left">ID</th>
+            <th class="px-4 py-2 text-left">User</th>
+            <th class="px-4 py-2 text-left">Washer</th>
+            <th class="px-4 py-2 text-left">Car ID</th>
+            <th class="px-4 py-2 text-left">Package ID</th>
+            <th class="px-4 py-2 text-left">Promo Code ID</th>
+            <th class="px-4 py-2 text-left">Scheduled Date</th>
+            <th class="px-4 py-2 text-left">Status</th>
+            <th class="px-4 py-2 text-left">Total Amount</th>
+          </tr>
+        </thead>
+        <tbody class="divide-y divide-gray-100">
+          <tr *ngFor="let order of orders" class="hover:bg-gray-50">
+            <td class="px-4 py-2">{{ order.id }}</td>
+            <td class="px-4 py-2">{{ order.userName }}</td>
+            <td class="px-4 py-2">{{ order.washerName || 'Not Assigned' }}</td>
+            <td class="px-4 py-2">{{ order.carId }}</td>
+            <td class="px-4 py-2">{{ order.packageId }}</td>
+            <td class="px-4 py-2">{{ order.promoCodeId }}</td>
+            <td class="px-4 py-2">{{ order.scheduledDate | date:'short' }}</td>
+            <td class="px-4 py-2">
+              <span 
+                class="px-2 py-1 rounded-full text-sm font-medium"
+                [ngClass]="{
+                  'bg-yellow-100 text-yellow-700': order.status === 'PENDING',
+                  'bg-green-100 text-green-700': order.status === 'ACCEPTED',
+                  'bg-red-100 text-red-700': order.status === 'CANCELED'
+                }"
+              >
+                {{ order.status }}
+              </span>
+            </td>
+            <td class="px-4 py-2">{{ order.totalAmount | currency:'INR':'symbol-narrow'}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <ng-template #noOrders>
+    <p class="text-gray-500">No orders found.</p>
+  </ng-template>
+</div>

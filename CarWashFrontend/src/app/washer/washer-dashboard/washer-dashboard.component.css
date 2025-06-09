@@ -1,0 +1,7 @@
+.glass-card {
+  @apply bg-white/10 p-4 rounded-xl shadow-md border border-white/10 backdrop-blur-sm hover:bg-white/20 transition duration-300;
+}
+
+.glass-btn {
+  @apply bg-white/10 px-4 py-2 rounded-lg border border-white/20 text-white hover:bg-white/20 transition;
+}

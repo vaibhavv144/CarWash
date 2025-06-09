@@ -1,0 +1,129 @@
+<div class="max-w-5xl mx-auto p-6">
+  <h2 class="text-2xl font-bold mb-6">Manage Coupons</h2>
+
+  <!-- Add New Promo Code -->
+  <div class="bg-white shadow-md rounded-lg p-6 mb-8">
+    <h3 class="text-lg font-semibold mb-4">Add New Promo Code</h3>
+    <form
+      (ngSubmit)="addPromoCode()"
+      class="grid grid-cols-1 md:grid-cols-3 gap-4"
+    >
+      <input
+        [(ngModel)]="newPromoCode.code"
+        name="code"
+        type="text"
+        placeholder="Code"
+        class="border border-gray-300 rounded-md px-3 py-2 w-full"
+        required
+      />
+
+      <input
+        [(ngModel)]="newPromoCode.discountPercent"
+        name="discountPercent"
+        type="number"
+        placeholder="Discount %"
+        class="border border-gray-300 rounded-md px-3 py-2 w-full"
+        required
+      />
+
+      <input
+        [(ngModel)]="newPromoCode.validTill"
+        name="validTill"
+        type="date"
+        class="border border-gray-300 rounded-md px-3 py-2 w-full"
+        required
+      />
+
+      <div class="col-span-1 md:col-span-3">
+        <button
+          type="submit"
+          class="bg-blue-600 text-white px-6 py-2 rounded-md hover:bg-blue-700 transition"
+        >
+          Add Promo Code
+        </button>
+      </div>
+    </form>
+  </div>
+
+  <!-- Promo Code List -->
+  <div class="bg-white shadow-md rounded-lg overflow-x-auto">
+    <table class="min-w-full divide-y divide-gray-200">
+      <thead class="bg-gray-100">
+        <tr>
+          <th class="px-4 py-2 text-left font-medium text-gray-700">Code</th>
+          <th class="px-4 py-2 text-left font-medium text-gray-700">
+            Discount %
+          </th>
+          <th class="px-4 py-2 text-left font-medium text-gray-700">
+            Valid Till
+          </th>
+          <th class="px-4 py-2 text-left font-medium text-gray-700">Actions</th>
+        </tr>
+      </thead>
+      <tbody class="divide-y divide-gray-200">
+        <tr *ngFor="let promo of promoCodes">
+          <ng-container *ngIf="editingPromo?.id !== promo.id; else editRow">
+            <td class="px-4 py-2">{{ promo.code }}</td>
+            <td class="px-4 py-2">{{ promo.discountPercent }}</td>
+            <td class="px-4 py-2">{{ promo.validTill | date }}</td>
+            <td class="px-4 py-2 space-x-2">
+              <button
+                class="bg-yellow-400 hover:bg-yellow-500 text-white px-3 py-1 rounded"
+                (click)="editPromoCode(promo)"
+              >
+                Edit
+              </button>
+              <button
+                class="bg-red-500 hover:bg-red-600 text-white px-3 py-1 rounded"
+                (click)="deletePromoCode(promo.id)"
+              >
+                Delete
+              </button>
+            </td>
+          </ng-container>
+
+          <ng-template #editRow>
+            <ng-container *ngIf="editingPromo as editing">
+              <tr>
+                <td class="px-4 py-2">
+                  <input
+                    [(ngModel)]="editing.code"
+                    class="border border-gray-300 rounded px-2 py-1 w-full"
+                  />
+                </td>
+                <td class="px-4 py-2">
+                  <input
+                    [(ngModel)]="editing.discountPercent"
+                    type="number"
+                    class="border border-gray-300 rounded px-2 py-1 w-full"
+                  />
+                </td>
+                <td class="px-4 py-2">
+                  <input
+                    [(ngModel)]="editing.validTill"
+                    type="date"
+                    class="border border-gray-300 rounded px-2 py-1 w-full"
+                  />
+                </td>
+                <td class="px-4 py-2 space-x-2">
+                  <button
+                    class="bg-green-500 hover:bg-green-600 text-white px-3 py-1 rounded"
+                    (click)="updatePromoCode()"
+                  >
+                    Save
+                  </button>
+                  <button
+                    class="bg-gray-400 hover:bg-gray-500 text-white px-3 py-1 rounded"
+                    (click)="cancelEdit()"
+                  >
+                    Cancel
+                  </button>
+                </td>
+              </tr>
+            </ng-container>
+          </ng-template>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

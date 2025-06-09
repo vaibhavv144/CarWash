@@ -1,0 +1,78 @@
+<div class="min-h-screen bg-black text-white flex flex-col">
+  <!-- Header -->
+  <header class="sticky top-0 z-50 flex justify-between items-center px-8 py-4 bg-black bg-opacity-80 backdrop-blur-md shadow-md">
+    <h1 class="text-2xl font-bold">GreenCarWash ✨</h1>
+    <nav class="space-x-4">
+      <a [routerLink]="'/login'" class="hover:text-indigo-400">Login</a>
+      <a [routerLink]="'/signup'" class="hover:text-indigo-400">Register</a>
+    </nav>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="relative h-[80vh] bg-cover bg-center flex items-center justify-center text-center" style="background-image: url('https://images.unsplash.com/photo-1607860108855-64acf2078ed9?q=80&w=2071&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D')">
+    <div class="bg-black bg-opacity-60 p-10 rounded-xl shadow-lg">
+      <h2 class="text-4xl md:text-6xl font-extrabold mb-4">Your Car Deserves Better</h2>
+      <p class="text-lg md:text-2xl">Premium Car Wash at Your Doorstep</p>
+    </div>
+  </section>
+
+  <!-- Features -->
+  <section class="py-12 px-8 bg-gray-900 text-center">
+    <h3 class="text-3xl font-semibold mb-6">Why Choose Us?</h3>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+      <div class="bg-gray-800 p-6 rounded-lg shadow-md">🚗 Eco-Friendly Wash</div>
+      <div class="bg-gray-800 p-6 rounded-lg shadow-md">⏱️ Fast & Reliable</div>
+      <div class="bg-gray-800 p-6 rounded-lg shadow-md">🏠 Home Service</div>
+    </div>
+  </section>
+
+  <!-- Testimonials -->
+  <section class="py-12 px-8 bg-black text-center">
+    <h3 class="text-3xl font-semibold mb-6">What Our Customers Say</h3>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <div class="bg-gray-800 p-6 rounded-lg shadow-md">
+        <p>"Absolutely amazing service! My car looks brand new!"</p>
+        <span class="block mt-2 text-indigo-400">– Priya S.</span>
+      </div>
+      <div class="bg-gray-800 p-6 rounded-lg shadow-md">
+        <p>"Quick, convenient, and eco-friendly. Highly recommend!"</p>
+        <span class="block mt-2 text-indigo-400">– Rahul M.</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pricing -->
+  <section class="py-12 px-8 bg-gray-900 text-center">
+    <h3 class="text-3xl font-semibold mb-6">Our Pricing</h3>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+      <div class="bg-gray-800 p-6 rounded-lg shadow-md">
+        <h4 class="text-xl font-bold mb-2">Basic</h4>
+        <p class="text-2xl font-semibold mb-4">₹299</p>
+        <p>Exterior Wash</p>
+      </div>
+      <div class="bg-gray-800 p-6 rounded-lg shadow-md">
+        <h4 class="text-xl font-bold mb-2">Standard</h4>
+        <p class="text-2xl font-semibold mb-4">₹499</p>
+        <p>Exterior + Interior Cleaning</p>
+      </div>
+      <div class="bg-gray-800 p-6 rounded-lg shadow-md">
+        <h4 class="text-xl font-bold mb-2">Premium</h4>
+        <p class="text-2xl font-semibold mb-4">₹799</p>
+        <p>Full Detailing + Wax</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Call to Action -->
+<section class="py-12 px-8 bg-black text-center text-white">
+  <h3 class="text-3xl font-bold mb-4">Ready to Shine?</h3>
+  <p class="mb-6">Book your car wash today and experience the AutoSpark difference.</p>
+  <a [routerLink]="'/signup'" class="bg-black text-white border border-white font-semibold px-6 py-3 rounded-full hover:bg-white hover:text-black transition duration-300">Get Started</a>
+</section>
+
+
+  <!-- Footer -->
+  <footer class="bg-black py-6 text-center text-gray-400 text-sm border-t border-gray-700">
+    &copy; 2025 AutoSpark. All rights reserved.
+  </footer>
+</div>

@@ -1,0 +1,20 @@
+<div class="max-w-xl mx-auto mt-10 p-6 bg-white rounded shadow">
+  <h2 class="text-2xl font-bold text-blue-700 mb-4">💳 Make Payment</h2>
+
+  <div *ngIf="errorMessage" class="text-red-600 mb-4">{{ errorMessage }}</div>
+  <div *ngIf="successMessage" class="text-green-600 mb-4">{{ successMessage }}</div>
+
+  <div class="mb-4">
+    <label class="font-semibold text-gray-700">Order ID:</label>
+    <div>{{ orderId }}</div>
+  </div>
+
+  <div class="mb-4">
+    <label class="font-semibold text-gray-700">Amount to Pay:</label>
+    <div class="text-xl font-bold text-green-600">₹{{ amount }}</div>
+  </div>
+
+  <button (click)="makePayment()" class="bg-green-600 hover:bg-green-700 text-white px-6 py-2 rounded">
+    Pay Now
+  </button>
+</div>

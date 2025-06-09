@@ -1,0 +1,88 @@
+<h2 class="text-2xl font-bold mb-4 text-center">Add-Ons Management</h2>
+
+<!-- Add New -->
+<div class="mb-6 flex flex-wrap gap-4 items-center bg-gray-100 p-4 rounded shadow">
+  <input
+    type="text"
+    [(ngModel)]="newAddon.name"
+    placeholder="Name"
+    class="px-3 py-2 border rounded w-48"
+  />
+  <input
+    type="number"
+    [(ngModel)]="newAddon.price"
+    placeholder="Price"
+    class="px-3 py-2 border rounded w-32"
+  />
+  <label class="flex items-center gap-2">
+    <input type="checkbox" [(ngModel)]="newAddon.isActive" class="accent-blue-500" />
+    <span>Active</span>
+  </label>
+  <button
+    (click)="addAddon()"
+    class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded"
+  >
+    Add
+  </button>
+</div>
+
+<!-- List -->
+<table class="w-full table-auto border border-gray-300 shadow rounded">
+  <thead class="bg-gray-200">
+    <tr>
+      <th class="p-3 text-left border-b">Name</th>
+      <th class="p-3 text-left border-b">Price</th>
+      <th class="p-3 text-left border-b">Active</th>
+      <th class="p-3 text-left border-b">Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let addon of addons" class="hover:bg-gray-50">
+      <ng-container *ngIf="editingAddon?.id !== addon.id">
+        <td class="p-3 border-b">{{ addon.name }}</td>
+        <td class="p-3 border-b">{{ addon.price }}</td>
+        <td class="p-3 border-b">{{ addon.isActive ? 'Yes' : 'No' }}</td>
+        <td class="p-3 border-b space-x-2">
+          <button
+            (click)="startEdit(addon)"
+            class="bg-yellow-500 hover:bg-yellow-600 text-white px-3 py-1 rounded"
+          >
+            Edit
+          </button>
+          <button
+            (click)="deleteAddon(addon.id)"
+            class="bg-red-600 hover:bg-red-700 text-white px-3 py-1 rounded"
+          >
+            Delete
+          </button>
+        </td>
+      </ng-container>
+    </tr>
+
+    <tr *ngIf="editingAddon" class="bg-gray-50">
+      <td class="p-3 border-b">
+        <input type="text" [(ngModel)]="editingAddon.name" class="w-full px-2 py-1 border rounded" />
+      </td>
+      <td class="p-3 border-b">
+        <input type="number" [(ngModel)]="editingAddon.price" class="w-full px-2 py-1 border rounded" />
+      </td>
+      <td class="p-3 border-b text-center">
+        <input type="checkbox" [(ngModel)]="editingAddon.isActive" class="accent-blue-500" />
+      </td>
+      <td class="p-3 border-b space-x-2">
+        <button
+          (click)="saveEdit()"
+          class="bg-green-600 hover:bg-green-700 text-white px-3 py-1 rounded"
+        >
+          Save
+        </button>
+        <button
+          (click)="cancelEdit()"
+          class="bg-gray-500 hover:bg-gray-600 text-white px-3 py-1 rounded"
+        >
+          Cancel
+        </button>
+      </td>
+    </tr>
+  </tbody>
+</table>

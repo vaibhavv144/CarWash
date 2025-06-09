@@ -1,0 +1,51 @@
+<h2 class="text-xl font-semibold mb-4">Manage Packages</h2>
+
+<table class="min-w-full border mb-6">
+  <thead>
+    <tr class="bg-gray-200">
+      <th class="border p-2">Name</th>
+      <th class="border p-2">Description</th>
+      <th class="border p-2">Price</th>
+      <th class="border p-2">Active</th>
+      <th class="border p-2">Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let pkg of packages">
+      <ng-container *ngIf="editingPackage && editingPackage.id === pkg.id; else viewRow">
+        <td class="border p-2"><input [(ngModel)]="editingPackage.name" class="border p-1 w-full" /></td>
+        <td class="border p-2"><input [(ngModel)]="editingPackage.description" class="border p-1 w-full" /></td>
+        <td class="border p-2"><input [(ngModel)]="editingPackage.price" type="number" class="border p-1 w-full" /></td>
+        <td class="border p-2"><input type="checkbox" [(ngModel)]="editingPackage.isActive" /></td>
+        <td class="border p-2">
+          <button (click)="updatePackage()" class="bg-green-500 text-white px-2 py-1 mr-1">Save</button>
+          <button (click)="cancelEdit()" class="bg-gray-500 text-white px-2 py-1">Cancel</button>
+        </td>
+      </ng-container>
+
+      <ng-template #viewRow>
+        <td class="border p-2">{{ pkg.name }}</td>
+        <td class="border p-2">{{ pkg.description }}</td>
+        <td class="border p-2">{{ pkg.price }}</td>
+        <td class="border p-2">{{ pkg.isActive ? 'Yes' : 'No' }}</td>
+        <td class="border p-2">
+          <button (click)="editPackage(pkg)" class="bg-yellow-500 text-white px-2 py-1 mr-1">Edit</button>
+          <button (click)="deletePackage(pkg.id)" class="bg-red-500 text-white px-2 py-1">Delete</button>
+        </td>
+      </ng-template>
+    </tr>
+  </tbody>
+</table>
+
+<!-- Add New Package -->
+<h3 class="text-lg font-semibold mb-2">Add New Package</h3>
+<div class="grid grid-cols-1 md:grid-cols-4 gap-4">
+  <input [(ngModel)]="newPackage.name" placeholder="Name" class="border p-2" />
+  <input [(ngModel)]="newPackage.description" placeholder="Description" class="border p-2" />
+  <input [(ngModel)]="newPackage.price" type="number" placeholder="Price" class="border p-2" />
+  <label class="flex items-center">
+    <input type="checkbox" [(ngModel)]="newPackage.isActive" class="mr-2" />
+    Active
+  </label>
+</div>
+<button (click)="addPackage()" class="mt-3 bg-blue-600 text-white px-4 py-2 rounded">Add Package</button>
